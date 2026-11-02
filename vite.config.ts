@@ -1,12 +1,13 @@
-
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
+  const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+
   return {
-    base: '/magisha_portfolio/',
+    base: isGitHubPages ? '/magisha_portfolio/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
