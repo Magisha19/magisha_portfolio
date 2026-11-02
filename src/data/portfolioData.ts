@@ -7,6 +7,14 @@ import {
   Achievement,
 } from '../types/portfolio';
 
+const BASE_URL = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+export const getAssetUrl = (path: string): string => {
+  if (!path) return "";
+  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  return `${BASE_URL}${cleanPath}`;
+};
+
 export const PERSONAL_INFO = {
   name: 'Magisha N',
   title: 'Cybersecurity Enthusiast',
@@ -19,8 +27,8 @@ export const PERSONAL_INFO = {
   linkedinDisplay: 'linkedin.com/in/magisha-n-147740359',
   github: 'https://github.com/Magisha19',
   githubDisplay: 'github.com/Magisha19',
-  photoUrl: '/assets/aistudio/photo-original_c79cbc86.png',
-  resumePdfUrl: '/assets/aistudio/magisha_resume_e832e907.pdf',
+  photoUrl: getAssetUrl('/assets/aistudio/photo-original_c79cbc86.png'),
+  resumePdfUrl: getAssetUrl('/assets/aistudio/magisha_resume_e832e907.pdf'),
   cgpa: '8.7',
   graduationExpected: 'Expected June 2027',
   shortSummary:
@@ -49,7 +57,7 @@ export const PROJECTS_DATA: Project[] = [
     subtitle: 'AI Security and Reliability Testing Suite',
     category: 'AI Safety',
     period: '2026',
-    image: '/src/assets/images/neurofence_dashboard_1793526887192.jpg',
+    image: getAssetUrl('/assets/projects/neurofence.jpg'),
     technologies: ['Python', 'PyQt5', 'LLM Evaluation', 'Prompt Engineering', 'Git', 'GitHub'],
     featured: true,
     overview:
@@ -93,7 +101,7 @@ export const PROJECTS_DATA: Project[] = [
     subtitle: 'Industrial Equipment Monitoring and Security',
     category: 'Industrial Security',
     period: '2025 – 2026',
-    image: '/src/assets/images/voltguard_scada_1793526887249.jpg',
+    image: getAssetUrl('/assets/projects/voltguard.jpg'),
     technologies: ['Python', 'C++', 'PyQt5', 'Scapy', 'Modbus/TCP', 'Network Packet Analysis'],
     featured: true,
     overview:
@@ -137,7 +145,7 @@ export const PROJECTS_DATA: Project[] = [
     subtitle: 'International Conference Research Paper (ICCET 2026)',
     category: 'Research',
     period: 'March 2026',
-    image: '/src/assets/images/ids_architecture_diagram_1793526887307.jpg',
+    image: getAssetUrl('/assets/projects/ids_architecture.jpg'),
     technologies: ['Machine Learning', 'Network Security', 'Intrusion Detection', 'Python', 'Data Preprocessing'],
     featured: true,
     overview:
@@ -181,7 +189,7 @@ export const PROJECTS_DATA: Project[] = [
     subtitle: 'Crowd Flow & Queue Monitoring System — Hackathon Finalist',
     category: 'Cybersecurity',
     period: 'June 2026',
-    image: '/src/assets/images/smart_darshan_system_1793526887459.jpg',
+    image: getAssetUrl('/assets/projects/smart_darshan.jpg'),
     technologies: ['Computer Vision', 'AI/ML', 'Python', 'Real-Time Telemetry', 'Safety Analytics'],
     featured: false,
     overview:
@@ -258,7 +266,7 @@ export const EXPERIENCES_DATA: Experience[] = [
     ],
     projectContributions:
       'Completed comprehensive Cyber Security training and two-month internship under Intelle QA Academy / DevsIndia, verified under Certificate ID: 21015d615686.',
-    certificateImage: '/assets/certificates/infointernce_page1.png',
+    certificateImage: getAssetUrl('/assets/certificates/infointernce_page1.png'),
     verified: true,
   },
   {
@@ -280,7 +288,7 @@ export const EXPERIENCES_DATA: Experience[] = [
     ],
     projectContributions:
       'Completed practical tasks in phishing simulation design and data interpretation, verified by Forage and Mastercard.',
-    certificateImage: '/assets/certificates/magi_achieve_page14.png',
+    certificateImage: getAssetUrl('/assets/certificates/magi_achieve_page14.png'),
     verified: true,
   },
   {
@@ -302,7 +310,7 @@ export const EXPERIENCES_DATA: Experience[] = [
     ],
     projectContributions:
       'Completed full virtual internship curriculum with Certificate E16A\\ICC\\2026\\180 signed by Director and XR Engineer.',
-    certificateImage: '/assets/certificates/magi_achieve_page17.png',
+    certificateImage: getAssetUrl('/assets/certificates/magi_achieve_page17.png'),
     verified: true,
   },
   {
@@ -325,7 +333,7 @@ export const EXPERIENCES_DATA: Experience[] = [
     ],
     projectContributions:
       'Awarded internship completion letter with "Excellent" performance assessment from Mandalo Tech leadership.',
-    certificateImage: '/assets/certificates/magi_achieve_page21.png',
+    certificateImage: getAssetUrl('/assets/certificates/magi_achieve_page21.png'),
     verified: true,
   },
 ];
@@ -408,7 +416,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     issuingOrganization: 'Cisco Networking Academy',
     completionDate: '2026',
     category: 'Cybersecurity',
-    image: '/assets/certificates/magi_achieve_page19.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page19.png'),
     description:
       'Verified credential in global cybersecurity trends, threat detection, defense techniques, and organizational data protection.',
     tags: ['Cisco', 'Cybersecurity', 'Threat Analysis'],
@@ -420,7 +428,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'June 16, 2026',
     category: 'Cybersecurity',
     credentialId: '6a2d8ca6671382cee4ced07d',
-    image: '/assets/certificates/magi_achieve_page14.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page14.png'),
     description:
       'Practical enterprise cybersecurity tasks designing a simulated phishing campaign and analyzing security awareness metrics.',
     verificationNote: 'Enrolment Verification Code: SM6utrXcS4tkporg2 | User: 6a2d8ca6671382cee4ced07d',
@@ -433,7 +441,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'August 25, 2026',
     category: 'Cybersecurity',
     credentialId: '21015d615686',
-    image: '/assets/certificates/infointernce_page1.png',
+    image: getAssetUrl('/assets/certificates/infointernce_page1.png'),
     description:
       'Awarded for successful completion of 2-month Cyber Security internship (25/06/2026 – 25/08/2026) covering security monitoring and log analysis.',
     verificationNote: 'Certificate ID: 21015d615686 | Employee ID: 416533401a11',
@@ -446,7 +454,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'August 25, 2026',
     category: 'Cybersecurity',
     credentialId: '21015d615686',
-    image: '/assets/certificates/infointern_page1.png',
+    image: getAssetUrl('/assets/certificates/infointern_page1.png'),
     description:
       'Comprehensive domain training in Cyber Security operations, troubleshooting tools, and project criteria.',
     tags: ['Infotact', 'Intelle QA Academy', 'Training'],
@@ -458,7 +466,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'July 1, 2025',
     category: 'Cybersecurity',
     credentialId: '8553697',
-    image: '/assets/certificates/magi_achieve_page15.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page15.png'),
     description:
       'Foundational credential covering types of cybercrime, attack vectors, cyber laws, and defensive countermeasures.',
     verificationNote: 'Certificate Code: 8553697 | Signed by CEO Krishna Kumar',
@@ -471,7 +479,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'October 10, 2026',
     score: '92%',
     category: 'Cybersecurity',
-    image: '/assets/certificates/aisectcert_page1.png',
+    image: getAssetUrl('/assets/certificates/aisectcert_page1.png'),
     description:
       'Completed comprehensive curriculum on digital hygiene, phishing prevention, authentication security, and cyber safety with a score of 92%.',
     verificationNote: 'Issued by Ms. Giorgia Varisco, Chief of Generation Unlimited (YuWaah), UNICEF',
@@ -485,7 +493,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     score: '56%',
     category: 'AI & LLM',
     credentialId: 'NPTEL26CS88S251000169',
-    image: '/assets/certificates/magi_achieve_page13.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page13.png'),
     description:
       '12-week rigorous academic course on Large Language Models architecture, fine-tuning, transformer attention, and evaluation. Proctored exam completed.',
     verificationNote: 'Roll No: NPTEL26CS88S251000169 | 4 Academic Credits Recommended',
@@ -498,7 +506,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'October 10, 2026',
     score: '95%',
     category: 'AI & LLM',
-    image: '/assets/certificates/aisectcerts_page1.png',
+    image: getAssetUrl('/assets/certificates/aisectcerts_page1.png'),
     description:
       'Certified proficiency in utilizing artificial intelligence tools for productivity and analytical automation with a score of 95%.',
     verificationNote: 'Issued by UNICEF Generation Unlimited (YuWaah)',
@@ -511,7 +519,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'July 22, 2025',
     category: 'AI & LLM',
     credentialId: '18f6b841-86bb-424a-9c96-10576ad34c7e',
-    image: '/assets/certificates/magi_achieve_page22.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page22.png'),
     description:
       'Verified IBM credential establishing core mastery of machine learning concepts, neural networks, computer vision, and NLP.',
     verificationNote: 'Credly verification badge: 18f6b841-86bb-424a-9c96-10576ad34c7e',
@@ -524,7 +532,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'February 4, 2026',
     category: 'AI & LLM',
     credentialId: 'E16A\\ICC\\2026\\180',
-    image: '/assets/certificates/magi_achieve_page17.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page17.png'),
     description:
       'Government of Tamil Nadu Naan Mudhalvan programme virtual internship exploring practical AI concepts and automation.',
     tags: ['Naan Mudhalvan', 'TNSDC', 'E16 AI', 'Internship'],
@@ -537,7 +545,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     score: '47%',
     category: 'Cloud & IoT',
     credentialId: 'NPTEL25CS11S943311993',
-    image: '/assets/certificates/magi_achieve_page12.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page12.png'),
     description:
       '12-week academic course covering virtualization, cloud storage, service models (IaaS/PaaS/SaaS), distributed systems, and resource scheduling.',
     verificationNote: 'Roll No: NPTEL25CS11S943311993 | 3 or 4 Credits Recommended',
@@ -551,7 +559,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     score: '50%',
     category: 'Cloud & IoT',
     credentialId: 'NPTEL25CS147S1054004772',
-    image: '/assets/certificates/magi_achieve_page20.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page20.png'),
     description:
       '12-week course covering IoT sensor architectures, embedded communications, protocols, and edge compute integration.',
     verificationNote: 'Roll No: NPTEL25CS147S1054004772 | 3 or 4 Credits Recommended',
@@ -563,7 +571,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     issuingOrganization: 'Sriram Engineering College',
     completionDate: 'Academic Year 2024–2025',
     category: 'Academic & Honors',
-    image: '/assets/certificates/magi_achieve_page2.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page2.png'),
     description:
       'Awarded 2nd Rank among Academic Toppers in the Cyber Security Department for outstanding scholastic performance and commitment.',
     verificationNote: 'Signed by Principal Dr. B.R. Ramesh Bapu & Convener Dr. G. Suganya',
@@ -576,7 +584,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'June 18, 2026',
     category: 'Academic & Honors',
     credentialId: 'AI4FWATNSDC180626021',
-    image: '/assets/certificates/magi_achieve_page1.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page1.png'),
     description:
       'Recognized as State Finalist for project Smart Darshan in Chennai, Tamil Nadu on 18th June 2026.',
     verificationNote: 'Signed by Shweta Khurana, Sr. Director – Asia Pacific & Japan, Intel Corporation',
@@ -588,7 +596,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     issuingOrganization: 'OSIET & Samarkand State University, Uzbekistan',
     completionDate: 'March 22–23, 2026',
     category: 'Academic & Honors',
-    image: '/assets/certificates/magi_achieve_page16.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page16.png'),
     description:
       'Presented research paper: "A Secure-Driven Two Stage IDS for Reliable Detection of Minority Attack" at the 14th ICCET 2026.',
     verificationNote: 'Held at Prince Shri Venkateshwara Padmavathy Engineering College, Chennai',
@@ -600,7 +608,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     issuingOrganization: 'R.M.K. College of Engineering and Technology',
     completionDate: 'March 17, 2025',
     category: 'Academic & Honors',
-    image: '/assets/certificates/magi_achieve_page9.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page9.png'),
     description:
       'Secured 1st Place in the Pencilvania event organized by the Department of Computer Science & Engineering (Cyber Security).',
     tags: ['1st Place', 'Symposium', 'RMKCET'],
@@ -611,7 +619,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     issuingOrganization: 'Sriram Engineering College & Nalaemton Infotech',
     completionDate: 'March 22, 2025',
     category: 'Cybersecurity',
-    image: '/assets/certificates/magi_achieve_page5.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page5.png'),
     description:
       'Hands-on workshop conducted in association with Mr. S. Nalaemton, Cyber Security Consultant at TCS Chennai.',
     tags: ['Penetration Testing', 'TCS Consultant', 'Workshop'],
@@ -622,7 +630,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     issuingOrganization: 'Mandalo Tech',
     completionDate: 'August 7, 2025',
     category: 'Professional Skills',
-    image: '/assets/certificates/magi_achieve_page21.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page21.png'),
     description:
       'Official letter certifying successful completion of Data Science internship with "Excellent" performance evaluation.',
     tags: ['Mandalo Tech', 'Data Science', 'Recommendation'],
@@ -634,7 +642,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'July 23, 2025',
     category: 'Professional Skills',
     credentialId: '6957562-f4b7-43d6-857e-14a7e845d2cc',
-    image: '/assets/certificates/magi_achieve_page24.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page24.png'),
     description:
       'Professional certification demonstrating problem-solving methodologies and structured process controls.',
     tags: ['IBM', 'Process Controls', 'Problem Solving'],
@@ -646,7 +654,7 @@ export const CERTIFICATES_DATA: Certificate[] = [
     completionDate: 'January 24, 2026',
     category: 'Professional Skills',
     credentialId: 'EAP/2025-26/1',
-    image: '/assets/certificates/magi_achieve_page11.png',
+    image: getAssetUrl('/assets/certificates/magi_achieve_page11.png'),
     description:
       'One Day Entrepreneurship Awareness Programme organized by Central Institute of Tool Design (CITD) Hyderabad Extension Centre.',
     tags: ['MSME', 'Govt of India', 'Leadership'],
@@ -714,7 +722,7 @@ export const ACHIEVEMENTS_DATA: Achievement[] = [
     description:
       'Awarded for outstanding scholastic standing, dedication, and exemplary academic commitment across core cybersecurity engineering courses.',
     category: 'Academic',
-    certificateImage: '/assets/certificates/magi_achieve_page2.png',
+    certificateImage: getAssetUrl('/assets/certificates/magi_achieve_page2.png'),
   },
   {
     title: 'State Finalist – Advanced AI/ML Hackathon 2026',
@@ -724,7 +732,7 @@ export const ACHIEVEMENTS_DATA: Achievement[] = [
     description:
       'Recognized for developing Smart Darshan, an automated computer vision crowd monitoring and queue estimation system.',
     category: 'Hackathon',
-    certificateImage: '/assets/certificates/magi_achieve_page1.png',
+    certificateImage: getAssetUrl('/assets/certificates/magi_achieve_page1.png'),
   },
   {
     title: '1st Place – Pencilvania (CyberXelerate 2.0)',
@@ -734,7 +742,7 @@ export const ACHIEVEMENTS_DATA: Achievement[] = [
     description:
       'Secured 1st Place in the Pencilvania event at the National Level Technical Symposium organized by CSE Cyber Security Department.',
     category: 'Competition',
-    certificateImage: '/assets/certificates/magi_achieve_page9.png',
+    certificateImage: getAssetUrl('/assets/certificates/magi_achieve_page9.png'),
   },
   {
     title: 'Winner – Escape Room Event',
@@ -753,6 +761,6 @@ export const ACHIEVEMENTS_DATA: Achievement[] = [
     description:
       'Participated in One Day Technical Paper Presentation organized by the Department of Edge Computing.',
     category: 'Academic',
-    certificateImage: '/assets/certificates/magi_achieve_page6.png',
+    certificateImage: getAssetUrl('/assets/certificates/magi_achieve_page6.png'),
   },
 ];
